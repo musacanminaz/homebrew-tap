@@ -1,5 +1,5 @@
 class Swelo < Formula
-  desc "Disk care for developer Macs: clean build artifacts, caches, Docker and SDKs safely"
+  desc "Safely clean build artifacts, caches, Docker and SDKs on developer Macs"
   homepage "https://github.com/musacanminaz/swelo"
   url "https://github.com/musacanminaz/swelo/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "06db7f6d9095af77fcbf9f30ffd66aa818e1a10494bbedf136a4b3d13d36435b"
@@ -19,8 +19,10 @@ class Swelo < Formula
     # dry run on an empty home must find nothing to delete and delete nothing
     (testpath/"Desktop/app/node_modules").mkpath
     (testpath/"Desktop/app/package.json").write "{}"
-    output = shell_output("HOME=#{testpath} SWELO_LANG=en #{bin}/swelo clean --only node --recent-days 0 --all </dev/null")
+    ENV["HOME"] = testpath
+    ENV["SWELO_LANG"] = "en"
+    output = shell_output("#{bin}/swelo clean --only node --recent-days 0 --all </dev/null")
     assert_match "node_modules", output
-    assert_predicate testpath/"Desktop/app/node_modules", :exist?
+    assert_path_exists testpath/"Desktop/app/node_modules"
   end
 end
