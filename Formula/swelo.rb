@@ -1,8 +1,8 @@
 class Swelo < Formula
   desc "Safely clean build artifacts, caches, Docker and SDKs on developer Macs"
   homepage "https://github.com/musacanminaz/swelo"
-  url "https://github.com/musacanminaz/swelo/archive/refs/tags/v0.6.0.tar.gz"
-  sha256 "9be0f12c1d108a0aa27de6f46bb51c6faff2db59100ade7d9be75a38cd35d659"
+  url "https://github.com/musacanminaz/swelo/archive/refs/tags/v0.6.1.tar.gz"
+  sha256 "609842f878ed381a928e88175af25fba16cbd0b687d4de51e5834cf71c9908a6"
   license "MIT"
   head "https://github.com/musacanminaz/swelo.git", branch: "main"
 
