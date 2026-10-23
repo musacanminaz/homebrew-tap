@@ -12,6 +12,7 @@ class Swelo < Formula
   def install
     ldflags = "-s -w -X github.com/musacanminaz/swelo/internal/cli.Version=#{version}"
     system "go", "build", *std_go_args(ldflags:), "./cmd/swelo"
+    generate_completions_from_executable(bin/"swelo", "completion")
   end
 
   test do
